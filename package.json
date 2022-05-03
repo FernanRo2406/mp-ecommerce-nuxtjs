@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "tailwind-config-viewer": "tailwind-config-viewer -o"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^5.0.3",
+    "nuxt": "3.0.0-rc.1"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.6.0",
+    "@nuxt-hero-icons/outline": "^1.0.1",
+    "@nuxt-hero-icons/solid": "^1.0.1"
+  }
+}
