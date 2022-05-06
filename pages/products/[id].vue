@@ -3,10 +3,9 @@ const route = useRoute();
 const products = useProducts();
 const product = products.find((p) => p.id === Number(route.params.id));
 const reviews = { average: 4, totalCount: 1624 };
+const preference = await createPreference(product);
 const mpScript = useMpScript();
-const mpCheckout = useMpCheckout(
-  "231995601-185e10b2-ea48-497a-ba0f-9ce45ce901c8"
-);
+const mpCheckout = useMpCheckout(preference.body.id);
 </script>
 <template>
   <div class="bg-white">

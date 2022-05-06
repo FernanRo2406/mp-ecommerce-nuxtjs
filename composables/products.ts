@@ -1,5 +1,5 @@
-export const createPreference = (product: any) => {
-  const mp = require("mercadopago");
+import mp from "mercadopago";
+export const createPreference = async (product: any) => {
   mp.configure({ access_token: process.env.MERCADOPAGO_ACCESS_TOKEN });
   const preference = {
     items: [
@@ -8,7 +8,7 @@ export const createPreference = (product: any) => {
         title: product.name,
         description: "Dispositivo móvil de Tienda e-commerce",
         quantity: 1,
-        unitPrice: product.price,
+        unit_price: product.price,
         currency_id: "ARS",
         picture_url: product.imageSrc,
       },
@@ -19,12 +19,12 @@ export const createPreference = (product: any) => {
       email: "test_user_63274575@testuser.com",
       phone: {
         area_code: "11",
-        number: "33838881",
+        number: 33838881,
       },
       address: {
         zip_code: "1440",
         street_name: "Falsa",
-        street_number: "123",
+        street_number: 123,
       },
     },
     payment_methods: {
@@ -46,8 +46,10 @@ export const createPreference = (product: any) => {
     notification_url: "https://localhost:3000/api/webhook",
     auto_return: "approved",
   };
-  var result : any
-  mp.preferences.create(preference).then((res: any) => { result = res}).catch((err) => console.log(err));
+  var result;
+  await Promise.resolve(mp.preferences.create(preference)).then((res) => {
+    result = res;
+  });
   return result;
 };
 
