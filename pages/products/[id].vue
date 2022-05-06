@@ -4,13 +4,13 @@ const products = useProducts();
 const product = products.find((p) => p.id === Number(route.params.id));
 const reviews = { average: 4, totalCount: 1624 };
 const preference = await createPreference(product);
-const mpScript = useMpScript();
-const mpCheckout = useMpCheckout(preference.body.id);
+// const mpScript = useMpScript();
+// const mpCheckout = useMpCheckout(preference.body.id);
 </script>
 <template>
   <div class="bg-white">
-    <div v-html="mpScript"></div>
-    <div v-html="mpCheckout"></div>
+    <!-- <div v-html="mpScript"></div>
+    <div v-html="mpCheckout"></div> -->
     <div
       class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8"
     >
@@ -122,13 +122,13 @@ const mpCheckout = useMpCheckout(preference.body.id);
 
           <form>
             <div class="mt-10">
-              <button
+              <a
                 type="button"
-                onclick="checkout.open()"
+                :href="preference.body.init_point"
                 class="w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
               >
                 Pagar
-              </button>
+              </a>
             </div>
           </form>
         </section>
