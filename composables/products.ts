@@ -1,6 +1,9 @@
 import mp from "mercadopago";
 export const createPreference = async (product: any) => {
-  mp.configure({ access_token: process.env.MERCADOPAGO_ACCESS_TOKEN });
+  mp.configure({
+    access_token: process.env.MERCADOPAGO_ACCESS_TOKEN,
+    integrator_id: process.env.MERCADOPAGO_INTEGRATOR_ID,
+  });
   const preference = {
     items: [
       {
