@@ -39,9 +39,9 @@ export const createPreference = async (product: any) => {
     external_reference: "fernan.ro.2406@gmail.com",
     back_urls: {
       // declaramos las urls de redireccionamiento
-      success: "https://localhost:3000/payments/success",
-      pending: "https://localhost:3000/payments/pending",
-      failure: "https://localhost:3000/payments/error",
+      success: "https://mp-ecommerce-nuxtjs.vercel.app/payments/success",
+      pending: "https://mp-ecommerce-nuxtjs.vercel.app/payments/pending",
+      failure: "https://mp-ecommerce-nuxtjs.vercel.app/payments/error",
     },
     notification_url: "https://localhost:3000/api/webhook",
     auto_return: "approved",
