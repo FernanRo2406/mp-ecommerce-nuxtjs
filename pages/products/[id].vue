@@ -4,7 +4,9 @@ const products = useProducts();
 const product = products.find((p) => p.id === Number(route.params.id));
 const reviews = { average: 4, totalCount: 1624 };
 const mpScript = useMpScript();
-const mpCheckout = useMpCheckout('231995601-185e10b2-ea48-497a-ba0f-9ce45ce901c8');
+const mpCheckout = useMpCheckout(
+  "231995601-185e10b2-ea48-497a-ba0f-9ce45ce901c8"
+);
 </script>
 <template>
   <div class="bg-white">
@@ -55,7 +57,9 @@ const mpCheckout = useMpCheckout('231995601-185e10b2-ea48-497a-ba0f-9ce45ce901c8
           <h2 id="information-heading" class="sr-only">Product information</h2>
 
           <div class="flex items-center">
-            <p class="text-lg text-gray-900 sm:text-xl">{{ product.price }}</p>
+            <p class="text-lg text-gray-900 sm:text-xl">
+              ${{ product.price.toLocaleString() }}
+            </p>
 
             <div class="ml-4 pl-4 border-l border-gray-300">
               <h2 class="sr-only">Reviews</h2>

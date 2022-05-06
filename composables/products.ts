@@ -1,14 +1,67 @@
+export const createPreference = (product: any) => {
+  const mp = require("mercadopago");
+  mp.configure({ access_token: process.env.MERCADOPAGO_ACCESS_TOKEN });
+  const preference = {
+    items: [
+      {
+        id: product.id,
+        title: product.name,
+        description: "Dispositivo móvil de Tienda e-commerce",
+        quantity: 1,
+        unitPrice: product.price,
+        currency_id: "ARS",
+        picture_url: product.imageSrc,
+      },
+    ],
+    payer: {
+      name: "Lalo",
+      surname: "Landa",
+      email: "test_user_63274575@testuser.com",
+      phone: {
+        area_code: "11",
+        number: "33838881",
+      },
+      address: {
+        zip_code: "1440",
+        street_name: "Falsa",
+        street_number: "123",
+      },
+    },
+    payment_methods: {
+      //excluir los pagos visa
+      excluded_payment_methods: [
+        {
+          id: "visa",
+        },
+      ],
+      installments: 6,
+    },
+    external_reference: "fernan.ro.2406@gmail.com",
+    back_urls: {
+      // declaramos las urls de redireccionamiento
+      success: "https://localhost:3000/success",
+      pending: "https://localhost:3000.com/pending",
+      failure: "https://localhost:3000.com/error",
+    },
+    notification_url: "https://localhost:3000/api/webhook",
+    auto_return: "approved",
+  };
+  var result : any
+  mp.preferences.create(preference).then((res: any) => { result = res}).catch((err) => console.log(err));
+  return result;
+};
+
 export const useMpScript = () =>
-  "<script>const mp = new MercadoPago('APP_USR-4d253c8c-91e9-4f16-ad71-8fae64a30c33', { locale: 'es-AR'});</script>";
+  `<script>const mp = new MercadoPago('${process.env.MERCADOPAGO_PUBLIC_KEY}', { locale: 'es-AR'});</script>`;
 
 export const useMpCheckout = (id: string) =>
   `<script>var checkout = mp.checkout({ preference: { id: '${id}', },});</script>`;
 
 export const useProducts = () => [
   {
-    id: 1,
+    id: 1456,
     name: "Samsung Galaxy S9",
-    price: "$15.000",
+    price: 15000,
     rating: 5,
     reviewCount: 38,
     imageSrc:
@@ -17,9 +70,9 @@ export const useProducts = () => [
     href: "#",
   },
   {
-    id: 2,
+    id: 2789,
     name: "LG G6",
-    price: "$10.000",
+    price: 10000,
     rating: 5,
     reviewCount: 18,
     imageSrc: "https://m.media-amazon.com/images/I/41k30sQzBNL._AC_.jpg",
@@ -27,9 +80,9 @@ export const useProducts = () => [
     href: "#",
   },
   {
-    id: 3,
+    id: 2345,
     name: "iPhone 8",
-    price: "$16.000",
+    price: 16000,
     rating: 5,
     reviewCount: 14,
     imageSrc:
@@ -38,9 +91,9 @@ export const useProducts = () => [
     href: "#",
   },
   {
-    id: 4,
+    id: 4659,
     name: "Motorola G8",
-    price: "$9.000",
+    price: 9000,
     rating: 4,
     reviewCount: 21,
     imageSrc:
@@ -49,9 +102,9 @@ export const useProducts = () => [
     href: "#",
   },
   {
-    id: 5,
+    id: 5789,
     name: "Moto G4",
-    price: "$8.000",
+    price: 8000,
     rating: 4,
     reviewCount: 21,
     imageSrc:
@@ -60,9 +113,9 @@ export const useProducts = () => [
     href: "#",
   },
   {
-    id: 6,
+    id: 6456,
     name: "Sony Xperia XZ",
-    price: "$10.000",
+    price: 10000,
     rating: 4,
     reviewCount: 21,
     imageSrc:

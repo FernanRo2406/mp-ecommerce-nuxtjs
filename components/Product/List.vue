@@ -31,7 +31,7 @@ const products = useProducts();
                 class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"
               />
               <p class="relative text-lg font-semibold text-white">
-                {{ product.price }}
+                ${{ product.price.toLocaleString() }}
               </p>
             </div>
           </div>
