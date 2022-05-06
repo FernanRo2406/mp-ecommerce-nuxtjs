@@ -1,3 +1,9 @@
+export const useMpScript = () =>
+  "<script>const mp = new MercadoPago('APP_USR-4d253c8c-91e9-4f16-ad71-8fae64a30c33', { locale: 'es-AR'});</script>";
+
+export const useMpCheckout = (id: string) =>
+  `<script>var checkout = mp.checkout({ preference: { id: '${id}', },});</script>`;
+
 export const useProducts = () => [
   {
     id: 1,
