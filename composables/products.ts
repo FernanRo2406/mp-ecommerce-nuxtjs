@@ -46,7 +46,7 @@ export const createPreference = async (product: any) => {
       pending: "https://mp-ecommerce-nuxtjs.vercel.app/payments/pending",
       failure: "https://mp-ecommerce-nuxtjs.vercel.app/payments/error",
     },
-    notification_url: "https://localhost:3000/api/webhook",
+    notification_url: "https://mp-ecommerce-nuxtjs.vercel.app/api/webhook",
     auto_return: "approved",
   };
   var result;

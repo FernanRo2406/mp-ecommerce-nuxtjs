@@ -10,10 +10,9 @@ export default defineNuxtConfig({
       { hid: "description", name: "description", content: "" },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-    script: [{ src: "https://sdk.mercadopago.com/js/v2" }],
-  },
-  body: {
-    script: [{ src: "https://sdk.mercadopago.com/js/v2" }],
+    script: [
+      { src: "https://sdk.mercadopago.com/js/v2/security.js", view: "home" },
+    ],
   },
   buildModules: [
     "@nuxtjs/tailwindcss",
