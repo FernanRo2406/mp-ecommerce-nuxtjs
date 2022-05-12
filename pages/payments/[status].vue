@@ -1,7 +1,7 @@
 <script setup>
 const route = useRoute();
 const status = route.params.status;
-const methodId = route.query.payment_method_id;
+const methodId = route.query.payment_type;
 const externalReference = route.query.external_reference;
 const paymentId = route.query.collection_id;
 const links = [
@@ -33,7 +33,7 @@ const links = [
           class="mx-auto h-12 w-auto text-green-500"
         />
         <SolidXCircleIcon
-          v-if="status === 'failure'"
+          v-if="status === 'error'"
           class="mx-auto h-12 w-auto text-red-500"
         />
         <SolidMinusCircleIcon
@@ -51,13 +51,13 @@ const links = [
           <p
             class="text-sm font-semibold uppercase tracking-wide"
             :class="{
-              'text-red-600': status === 'failure',
+              'text-red-600': status === 'error',
               'text-green-600': status === 'success',
               'text-yellow-600': status === 'pending',
             }"
           >
             {{
-              status == "failure"
+              status == "error"
                 ? "fallado"
                 : status == "pending"
                 ? "pendiente"
@@ -70,7 +70,7 @@ const links = [
             class="mt-2 text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl"
           >
             {{
-              status == "failure"
+              status == "error"
                 ? "Tu pago ha fallado"
                 : status == "pending"
                 ? "Tu pago está pendiente"
@@ -139,21 +139,3 @@ const links = [
     </main>
   </div>
 </template>
-
-<!-- <template>
-  <div>
-    <h1>
-      {{
-        status == "failure"
-          ? "Tu pago ha fallado"
-          : status == "pending"
-          ? "Tu pago está pendiente"
-          : status == "success"
-          ? "Tu pago ha sido aprobado"
-          : ""
-      }}
-    </h1>
-    <h1>Datos del pago</h1>
-
-  </div>
-</template> -->
