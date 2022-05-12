@@ -1,8 +1,5 @@
-// import { useQuery } from 'h3'
-
-// export default async (req, res) => {
-//   const { code } = useQuery(req)
-//   console.log(code)
-// }
-export default defineEventHandler(() => 'Test post handler')
-
+export default defineEventHandler(async (event) => {
+  const body = await useBody(event);
+  console.log(body);
+  return { body };
+});
