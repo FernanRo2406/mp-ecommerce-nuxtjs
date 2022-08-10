@@ -127,7 +127,16 @@ const preference = await createPreference(product);
                 :href="preference.body.init_point"
                 class="w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
               >
-                Pagar
+                Pagar con MP
+              </a>
+            </div>
+            <div class="mt-10">
+              <a
+                type="button"
+                href="/payments/create"
+                class="w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
+              >
+                Pagar con tarjeta
               </a>
             </div>
           </form>
