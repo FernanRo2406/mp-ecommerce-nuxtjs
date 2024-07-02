@@ -10,7 +10,8 @@ const preference = await createPreference(product);
 <template>
   <div class="bg-white">
     <!-- <div v-html="mpScript"></div>
-    <div v-html="mpCheckout"></div> -->
+    <div v-html="mpCheckout"></div>
+    <div id="wallet_container"></div> -->
     <div
       class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8"
     >

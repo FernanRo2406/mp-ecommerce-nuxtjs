@@ -57,10 +57,19 @@ export const createPreference = async (product: any) => {
 };
 
 export const useMpScript = () =>
-  `<script>const mp = new MercadoPago('${process.env.MERCADOPAGO_PUBLIC_KEY}', { locale: 'es-AR'});</script>`;
+  `<script>const mp = new MercadoPago('${process.env.MERCADOPAGO_PUBLIC_KEY}', { locale: 'es-AR'}); const bricksBuilder = mp.bricks();</script>`;
 
 export const useMpCheckout = (id: string) =>
-  `<script>var checkout = mp.checkout({ preference: { id: '${id}', },});</script>`;
+  `<script>var checkout = mp.bricks().create("wallet", "wallet_container", {
+   initialization: {
+       preferenceId: "${id}",
+   },
+customization: {
+ texts: {
+  valueProp: 'smart_option',
+ },
+ },
+});</script>`;
 
 export const useMpBricks = () =>
   `<script> const mp = new MercadoPago("${process.env.MERCADOPAGO_PUBLIC_KEY}", { locale: "es-AR", }); const bricksBuilder = mp.bricks(); const renderCardPaymentBrick = async (bricksBuilder) => { const settings = { initialization: { amount: 100, payer: { email: "test@mail.com", }, }, customization: { visual: { style: { theme: "flat", }, }, }, callbacks: { onReady: () => {}, onSubmit: (cardFormData) => { return new Promise((resolve, reject) => { fetch("/process_payment", { method: "POST", headers: { "Content-Type": "application/json", }, body: JSON.stringify(cardFormData), }) .then((response) => { resolve(); }) .catch((error) => { reject(); }); }); }, onError: (error) => {}, }, }; window.cardPaymentBrickController = await bricksBuilder.create( "cardPayment", "cardPaymentBrick_container", settings ); }; renderCardPaymentBrick(bricksBuilder); </script>`;
