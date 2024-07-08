@@ -125,8 +125,8 @@ const preference = await createPreference(product);
             <div class="mt-10">
               <a
                 type="button"
-                :href="preference.body.init_point"
                 class="w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
+                :href="preference.init_point"
               >
                 Pagar con MP
               </a>
@@ -144,5 +144,6 @@ const preference = await createPreference(product);
         </section>
       </div>
     </div>
+    <!-- <pre>{{ JSON.stringify(preference) }}</pre> -->
   </div>
 </template>
